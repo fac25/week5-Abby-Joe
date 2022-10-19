@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import "./game.css";
 
 const cardImages = [
   { src: "/src/assets/pic_1.jpg" },
@@ -11,27 +12,75 @@ const cardImages = [
 
 function Game() {
   // double from 6 to 12 cards
-  const allCards = [...cardImages, ...cardImages];
+  //Why
+  // const allCards = [...cardImages, ...cardImages];
 
   //create use state to update
   const [cards, setCards] = useState([]);
+  const [turns, setTurns] = useState(0);
+
+  const [firstChoice, setFirstChoice] = useState(null);
+  const [secondChoice, setSecondChoice] = useState(null);
 
   // Function to shuffle array of cards
   const shuffledArray = () => {
-    allCards.sort(() => 0.5 - Math.random());
+    const allCards = [...cardImages, ...cardImages]
+      .sort(() => 0.5 - Math.random())
+      .map((card) => ({ ...card, id: Math.random(), flipped: false }));
+    // gives unique id to card
     setCards(allCards);
+    setTurns(0);
   };
 
+  //Links the src image and id
+  const handleChoice = (card) => {
+    firstChoice ? setSecondChoice(card) : setFirstChoice(card);
+  };
+
+  // find way to mark card as flipped
+  // when matched both card stay flipped
+  // when not match both card unflipped
+  // when all matched show congratulation
+
+  useEffect(() => {
+    if (firstChoice && secondChoice) {
+      console.log("two things clicked");
+
+      reset();
+      if (firstChoice === secondChoice) {
+        console.log("it's a match");
+      } else {
+        console.log("wrong");
+      }
+    }
+  }, [firstChoice, secondChoice]);
+
+  const reset = () => {
+    setFirstChoice(null);
+    setSecondChoice(null);
+    console.log("been reset");
+  };
   return (
     <div>
-      <p>Welcome Joe</p>
-      <p>This is the games page</p>
-      <p>This is where all the game info will be</p>
+      <h1>Flip Flip</h1>
+      <p>Welcome NameGoesHere... </p>
+      <p>Click the button to begin </p>
+      <button className="button" onClick={shuffledArray}>
+        Play!
+      </button>
       {cards.map((card) => (
-        <img src={card.src}></img>
+        <div key={card.id}>
+          <div>
+            <img className="back" src={card.src}></img>
+            <img
+              className="cover_img"
+              src="/src/assets/cover_pic.jpg"
+              onClick={() => handleChoice(card.src)}
+            ></img>
+          </div>
+        </div>
       ))}
-      <a href="/">back home</a>
-      <button onClick={shuffledArray}>Shuffle</button>;
+      <a href="/">Home</a>
     </div>
   );
 }

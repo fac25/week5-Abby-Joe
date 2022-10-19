@@ -1,0 +1,12 @@
+h1 {
+  text-align: center;
+}
+
+.button,
+a {
+  cursor: pointer;
+  border: none;
+  color: black;
+  background-color: white;
+  text-decoration: none;
+}

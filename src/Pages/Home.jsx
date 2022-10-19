@@ -1,4 +1,4 @@
-function Login() {
+function Home() {
   return (
     <div>
       <h1>Card Flip Game</h1>
@@ -11,4 +11,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Home;

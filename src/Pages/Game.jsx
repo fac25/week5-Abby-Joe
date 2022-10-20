@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
-import pic_1 from "/public/pic_1.jpg";
-import pic_2 from "/public/pic_2.jpg";
-import pic_3 from "/public/pic_3.jpg";
-import pic_4 from "/public/pic_4.jpg";
-import pic_5 from "/public/pic_5.jpg";
-import pic_6 from "/public/pic_6.jpg";
+import cover from "../assets/cover_pic.jpg";
+import pic_1 from "../assets/pic_1.jpg";
+import pic_2 from "../assets/pic_2.jpg";
+import pic_3 from "../assets/pic_3.jpg";
+import pic_4 from "../assets/pic_4.jpg";
+import pic_5 from "../assets/pic_5.jpg";
+import pic_6 from "../assets/pic_6.jpg";
 
 const cardImages = [
   { src: { pic_1 }.pic_1 },
@@ -79,7 +80,7 @@ function Game() {
             <img className="back" src={card.src}></img>
             <img
               className="cover_img"
-              src="public/cover_pic.jpg"
+              src={cover}
               onClick={() => handleChoice(card.src)}
             ></img>
           </div>

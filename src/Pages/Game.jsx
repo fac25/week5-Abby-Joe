@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import "./game.css";
+
 import cover from "../assets/cover_pic.jpg";
 import pic_1 from "../assets/pic_1.jpg";
 import pic_2 from "../assets/pic_2.jpg";
@@ -25,6 +27,7 @@ function Game() {
   const [cards, setCards] = useState([]);
   const [turns, setTurns] = useState(0);
 
+
   const [firstChoice, setFirstChoice] = useState(null);
   const [secondChoice, setSecondChoice] = useState(null);
 
@@ -32,15 +35,20 @@ function Game() {
   const shuffledArray = () => {
     const allCards = [...cardImages, ...cardImages]
       .sort(() => 0.5 - Math.random())
-      .map((card) => ({ ...card, id: Math.random(), flipped: false }));
+      .map((card) => ({ ...card, id: Math.random(), matched: false }));
     // gives unique id to card
     setCards(allCards);
     setTurns(0);
   };
 
   //Links the src image and id
-  const handleChoice = (card) => {
-    firstChoice ? setSecondChoice(card) : setFirstChoice(card);
+  const handleChoice = (card, event) => {
+
+    firstChoice ? setSecondChoice(card.src) : setFirstChoice(card.src);
+    //sort out condition here
+    if (card.matched === true || card.src === firstChoice || card.src === secondChoice) {
+      event.target.parentElement.classList.add('matchStyled')
+    }
   };
 
   // find way to mark card as flipped
@@ -52,14 +60,22 @@ function Game() {
     if (firstChoice && secondChoice) {
       console.log("two things clicked");
 
-      reset();
       if (firstChoice === secondChoice) {
-        console.log("it's a match");
+        // updates status to true
+        cards.map((card) => {
+          if (card.src === firstChoice) {
+            card.matched = true
+          }
+        })
+        reset();
       } else {
         console.log("wrong");
+        reset();
       }
     }
+
   }, [firstChoice, secondChoice]);
+  console.log(cards)
 
   const reset = () => {
     setFirstChoice(null);
@@ -76,12 +92,12 @@ function Game() {
       </button>
       {cards.map((card) => (
         <div key={card.id}>
-          <div>
+          <div >
             <img className="back" src={card.src}></img>
             <img
               className="cover_img"
               src={cover}
-              onClick={() => handleChoice(card.src)}
+              onClick={(event) => handleChoice(card, event)}
             ></img>
           </div>
         </div>

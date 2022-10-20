@@ -46,10 +46,12 @@ function Game() {
 
     firstChoice ? setSecondChoice(card.src) : setFirstChoice(card.src);
     //sort out condition here
-    if (card.matched === true || card.src === firstChoice || card.src === secondChoice) {
+    if (card.matched === true) {
+
       event.target.parentElement.classList.add('matchStyled')
     }
   };
+  console.log(cards)
 
   // find way to mark card as flipped
   // when matched both card stay flipped
@@ -59,7 +61,7 @@ function Game() {
   useEffect(() => {
     if (firstChoice && secondChoice) {
       console.log("two things clicked");
-
+      
       if (firstChoice === secondChoice) {
         // updates status to true
         cards.map((card) => {

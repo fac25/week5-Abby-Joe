@@ -1,13 +1,18 @@
 import { useState, useEffect } from "react";
 import pic_1 from "/public/pic_1.jpg";
+import pic_2 from "/public/pic_2.jpg";
+import pic_3 from "/public/pic_3.jpg";
+import pic_4 from "/public/pic_4.jpg";
+import pic_5 from "/public/pic_5.jpg";
+import pic_6 from "/public/pic_6.jpg";
 
 const cardImages = [
   { src: { pic_1 }.pic_1 },
-  { src: "public/pic_3.jpg" },
-  { src: "public/pic_2.jpg" },
-  { src: "public/pic_4.jpg" },
-  { src: "public/pic_5.jpg" },
-  { src: "public/pic_6.jpg" },
+  { src: { pic_2 }.pic_2 },
+  { src: { pic_3 }.pic_3 },
+  { src: { pic_4 }.pic_4 },
+  { src: { pic_5 }.pic_5 },
+  { src: { pic_6 }.pic_6 },
 ];
 
 function Game() {

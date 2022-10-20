@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import "./game.css";
+import pic_1 from "/public/pic_1.jpg";
 
 const cardImages = [
-  { src: "public/pic_1.jpg" },
+  { src: { pic_1 }.pic_1 },
   { src: "public/pic_3.jpg" },
   { src: "public/pic_2.jpg" },
   { src: "public/pic_4.jpg" },

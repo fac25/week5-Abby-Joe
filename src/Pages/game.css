@@ -10,3 +10,7 @@ a {
   background-color: white;
   text-decoration: none;
 }
+
+.matchStyle {
+  display: none;
+}

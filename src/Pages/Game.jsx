@@ -41,27 +41,17 @@ function Game() {
     setTurns(0);
   };
 
+  let clicked = []
   //Links the src image and id
-  const handleChoice = (card, event) => {
-
-    firstChoice ? setSecondChoice(card.src) : setFirstChoice(card.src);
-    //sort out condition here
-    if (card.matched === true) {
-
-      event.target.parentElement.classList.add('matchStyled')
-    }
+  const handleChoice = (card) => {
+    firstChoice ? setSecondChoice(card.src) : setFirstChoice(card.src)
   };
-  console.log(cards)
 
-  // find way to mark card as flipped
-  // when matched both card stay flipped
-  // when not match both card unflipped
-  // when all matched show congratulation
 
   useEffect(() => {
     if (firstChoice && secondChoice) {
       console.log("two things clicked");
-      
+
       if (firstChoice === secondChoice) {
         // updates status to true
         cards.map((card) => {
@@ -76,8 +66,8 @@ function Game() {
       }
     }
 
+
   }, [firstChoice, secondChoice]);
-  console.log(cards)
 
   const reset = () => {
     setFirstChoice(null);
@@ -94,12 +84,12 @@ function Game() {
       </button>
       {cards.map((card) => (
         <div key={card.id}>
-          <div >
+          <div className={card.matched ? "matchStyle" : ""}>
             <img className="back" src={card.src}></img>
             <img
               className="cover_img"
               src={cover}
-              onClick={(event) => handleChoice(card, event)}
+              onClick={() => handleChoice(card)}
             ></img>
           </div>
         </div>
@@ -122,4 +112,8 @@ export default Game;
 // we need to add an onclick event Listener on each cover images and
 // ClickOne and ClickTwo we compare both if CLickOne and ClickTwo is matched then leave them flipped.
 
-//
+
+// find way to mark card as flipped
+// when matched both card stay flipped
+// when not match both card unflipped
+// when all matched show congratulation

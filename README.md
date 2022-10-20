@@ -2,6 +2,10 @@
 
 Week 5 Project by Abby & Joe
 
+## Set Up 
+1. Run `npm install` to install all the dependencies
+2. Run `npm run dev` to start the local dev server
+
 ## Introduction 
 
 The user flips two cards. If the two cards match, the user will get one point, and the cards will remain ‘flipped’. 

@@ -6,11 +6,13 @@ Week 5 Project by Abby & Joe
 
 The user flips two cards. If the two cards match, the user will get one point, and the cards will remain ‘flipped’. 
 
+Click [here](https://clinquant-crumble-ff5a2f.netlify.app/) to see the deployed site. 
+
 ## Criteria 
 
-- [ ] Accept at least 2 kinds of user input
+- [x] Accept at least 2 kinds of user input
 - [ ] Score tracker
-- [ ] Have some form of persistent state and interactivity
+- [x] Have some form of persistent state and interactivity
 - [ ] Previous guesses
 
 ## Stretch criteria 

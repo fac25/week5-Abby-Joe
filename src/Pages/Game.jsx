@@ -2,12 +2,12 @@ import { useState, useEffect } from "react";
 import "./game.css";
 
 const cardImages = [
-  { src: "/src/assets/pic_1.jpg" },
-  { src: "/src/assets/pic_2.jpg" },
-  { src: "/src/assets/pic_3.jpg" },
-  { src: "/src/assets/pic_4.jpg" },
-  { src: "/src/assets/pic_5.jpg" },
-  { src: "/src/assets/pic_6.jpg" },
+  { src: "public/pic_1.jpg" },
+  { src: "public/pic_3.jpg" },
+  { src: "public/pic_2.jpg" },
+  { src: "public/pic_4.jpg" },
+  { src: "public/pic_5.jpg" },
+  { src: "public/pic_6.jpg" },
 ];
 
 function Game() {
@@ -74,7 +74,7 @@ function Game() {
             <img className="back" src={card.src}></img>
             <img
               className="cover_img"
-              src="/src/assets/cover_pic.jpg"
+              src="public/cover_pic.jpg"
               onClick={() => handleChoice(card.src)}
             ></img>
           </div>

@@ -1,13 +1,10 @@
 import { Link } from "react-router-dom";
 
 function Home({ setName }) {
-  function getName(e) {
-    if(!setName(e.target.value) ) {
-      return
-    } else {
+  function getName(e) {     
     setName(e.target.value);
-    }
-  }
+    }  
+  
 
   return (
     <div className="home-container">
@@ -18,5 +15,4 @@ function Home({ setName }) {
     </div>
   );
 }
-
 export default Home;

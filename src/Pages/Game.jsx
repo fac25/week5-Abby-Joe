@@ -55,7 +55,7 @@ function Game() {
       if (firstChoice.src === secondChoice.src) {
         // updates status to true
         setCards(prevCards => {
-          return prevCards.map(card => {
+           prevCards.map(card => {
             if (card.src === firstChoice.src) {
               return { ...card, matched: true }
             } else {

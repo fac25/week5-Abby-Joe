@@ -1,4 +1,12 @@
+body {
+  margin: 0;
+}
+
 h1 {
+  text-align: center;
+}
+
+.game-page {
   text-align: center;
 }
 
@@ -9,8 +17,29 @@ a {
   color: black;
   background-color: white;
   text-decoration: none;
+  padding: 0 1rem;
+  margin-right: 1rem;
+  border-radius: 1rem;
+  font-size: 1rem;
 }
 
-.matchStyle {
-  display: none;
+.card-grid {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+
+}
+
+.card {
+  position: relative;
+  margin: 3px;
+}
+
+
+.card .back {
+  transform: rotateY(90deg);
+  position: absolute;
+}
+
+.flipped .back {
+  transform: rotateY(0deg);
 }

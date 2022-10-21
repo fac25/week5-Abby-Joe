@@ -35,66 +35,74 @@ function Game() {
   const shuffledArray = () => {
     const allCards = [...cardImages, ...cardImages]
       .sort(() => 0.5 - Math.random())
-      .map((card) => ({ ...card, id: Math.random(), matched: false }));
+      .map((card) => ({ ...card, id: Math.random(), matched: false, clicked: false }));
     // gives unique id to card
     setCards(allCards);
     setTurns(0);
   };
 
-  let clicked = []
+
   //Links the src image and id
   const handleChoice = (card) => {
-    firstChoice ? setSecondChoice(card.src) : setFirstChoice(card.src)
+    firstChoice ? setSecondChoice(card) : setFirstChoice(card)
+
   };
 
 
   useEffect(() => {
     if (firstChoice && secondChoice) {
-      console.log("two things clicked");
 
-      if (firstChoice === secondChoice) {
+      if (firstChoice.src === secondChoice.src) {
         // updates status to true
-        cards.map((card) => {
-          if (card.src === firstChoice) {
-            card.matched = true
-          }
+        setCards(prevCards => {
+          return prevCards.map(card => {
+            if (card.src === firstChoice.src) {
+              return { ...card, matched: true }
+            } else {
+              return card
+            }
+
+          })
         })
         reset();
       } else {
-        console.log("wrong");
-        reset();
+        setTimeout(() => reset(), 1000);
       }
     }
-
-
   }, [firstChoice, secondChoice]);
+
 
   const reset = () => {
     setFirstChoice(null);
     setSecondChoice(null);
     console.log("been reset");
   };
+
   return (
-    <div>
+    <div className="game-page">
       <h1>Flip Flip</h1>
       <p>Welcome NameGoesHere... </p>
       <p>Click the button to begin </p>
       <button className="button" onClick={shuffledArray}>
         Play!
       </button>
-      {cards.map((card) => (
-        <div key={card.id}>
-          <div className={card.matched ? "matchStyle" : ""}>
-            <img className="back" src={card.src}></img>
-            <img
-              className="cover_img"
-              src={cover}
-              onClick={() => handleChoice(card)}
-            ></img>
-          </div>
-        </div>
-      ))}
       <a href="/">Home</a>
+      <div className="card-grid">
+        {cards.map((card) => (
+          <div key={card.id} className="card">
+            <div className={card.clicked = card === firstChoice || card === secondChoice || card.matched ? "flipped" : ""}>
+              <img className="back" src={card.src}></img>
+              <img
+                className="cover"
+                src={cover}
+                onClick={() => handleChoice(card)}
+              ></img>
+            </div>
+          </div>
+
+        ))}
+      </div>
+
     </div>
   );
 }

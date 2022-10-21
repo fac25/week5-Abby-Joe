@@ -18,7 +18,8 @@ const cardImages = [
   { src: { pic_6 }.pic_6 },
 ];
 
-function Game() {
+function Game({ name }) {
+  console.log(name);
   // double from 6 to 12 cards
   //Why
   // const allCards = [...cardImages, ...cardImages];
@@ -26,7 +27,6 @@ function Game() {
   //create use state to update
   const [cards, setCards] = useState([]);
   const [turns, setTurns] = useState(0);
-
 
   const [firstChoice, setFirstChoice] = useState(null);
   const [secondChoice, setSecondChoice] = useState(null);
@@ -41,19 +41,20 @@ function Game() {
     setTurns(0);
   };
 
-
   //Links the src image and id
   const handleChoice = (card) => {
     firstChoice ? setSecondChoice(card) : setFirstChoice(card)
 
-  };
 
+  };
 
   useEffect(() => {
     if (firstChoice && secondChoice) {
 
       if (firstChoice.src === secondChoice.src) {
         // updates status to true
+
+
         setCards(prevCards => {
           return prevCards.map(card => {
             if (card.src === firstChoice.src) {
@@ -64,6 +65,7 @@ function Game() {
 
           })
         })
+
         reset();
       } else {
         setTimeout(() => reset(), 1000);
@@ -81,7 +83,7 @@ function Game() {
   return (
     <div className="game-page">
       <h1>Flip Flip</h1>
-      <p>Welcome NameGoesHere... </p>
+      <p>Welcome {name} </p>
       <p>Click the button to begin </p>
       <button className="button" onClick={shuffledArray}>
         Play!
@@ -119,7 +121,6 @@ export default Game;
 
 // we need to add an onclick event Listener on each cover images and
 // ClickOne and ClickTwo we compare both if CLickOne and ClickTwo is matched then leave them flipped.
-
 
 // find way to mark card as flipped
 // when matched both card stay flipped

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./game.css";
 
 import cover from "../assets/cover_pic.jpg";
@@ -19,11 +20,7 @@ const cardImages = [
 ];
 
 function Game({ name }) {
-  console.log(name);
-  // double from 6 to 12 cards
-  //Why
-  // const allCards = [...cardImages, ...cardImages];
-
+ 
   //create use state to update
   const [cards, setCards] = useState([]);
   const [turns, setTurns] = useState(0);
@@ -83,12 +80,14 @@ function Game({ name }) {
   return (
     <div className="game-page">
       <h1>Flip Flip</h1>
-      <p>Welcome {name} </p>
-      <p>Click the button to begin </p>
-      <button className="button" onClick={shuffledArray}>
+      <p>Welcome {name}</p>
+      <p>Click the button to begin</p>
+      <div className="btn-container">
+      <button className="btn" onClick={shuffledArray}>
         Play!
       </button>
-      <a href="/">Home</a>
+      <Link className="route-link" to="/">Home</Link>
+      </div>
       <div className="card-grid">
         {cards.map((card) => (
           <div key={card.id} className="card">
@@ -111,18 +110,3 @@ function Game({ name }) {
 
 export default Game;
 
-//Prepare picture to render * 6 (same size)--**stretch import from API
-//need a cover picture
-
-//create a array with [...pic, ...pic]
-
-//we need to randomise the array (.sort(Math.random-0.5)) shuffle()
-//loop through pic array display images on screen
-
-// we need to add an onclick event Listener on each cover images and
-// ClickOne and ClickTwo we compare both if CLickOne and ClickTwo is matched then leave them flipped.
-
-// find way to mark card as flipped
-// when matched both card stay flipped
-// when not match both card unflipped
-// when all matched show congratulation

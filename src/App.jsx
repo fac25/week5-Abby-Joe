@@ -6,11 +6,7 @@ import Home from "./Pages/Home";
 
 function App() {
   const [name, setName] = useState("");
-  console.log(name);
 
-
-
-  
   return (
     <Router>
       <Routes>

@@ -10,8 +10,7 @@ h1 {
   text-align: center;
 }
 
-.button,
-a {
+.btn {
   cursor: pointer;
   border: none;
   color: black;
@@ -23,15 +22,37 @@ a {
   font-size: 1rem;
 }
 
-.card-grid {
-  display: grid;
-  grid-template-columns: auto auto auto auto;
-
+.btn-container{
+margin: 2rem 0;
 }
 
+a {
+  cursor: pointer;
+  border: none;
+  color: black;
+  background-color: white;
+  text-decoration: none;
+  padding: 0 1rem;
+  border-radius: 1rem;
+  font-size: 1rem;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: auto auto auto;
+
+}
+/* .card-grid::hover{
+  cursor: pointer;
+} */
 .card {
   position: relative;
   margin: 3px;
+  
+}
+
+.cover:hover{
+  cursor: alias;
 }
 
 

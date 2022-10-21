@@ -2,3 +2,16 @@ body {
   background-color: pink;
   text-align: center;
 }
+
+.home-container{
+  display: flex;
+  flex-direction: column;
+  width:100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-container>*{
+  width: 30%;
+  margin-bottom: 1rem;
+}
